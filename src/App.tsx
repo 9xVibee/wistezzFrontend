@@ -1,5 +1,28 @@
-const App = () => {
-  return <div>App</div>;
-};
+import { createBrowserRouter } from "react-router-dom";
+import Home from "./pages/Home";
+import MainLayout from "./layout/MainLayout";
+import "./index.css";
+import SearchPage from "./pages/SearchPage";
+import SubmitWebsite from "./pages/SubmitWebsite";
 
-export default App;
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/search",
+        element: <SearchPage />,
+      },
+      {
+        path: "/submit-website",
+        element: <SubmitWebsite />,
+      },
+    ],
+  },
+]);
+export default appRouter;
