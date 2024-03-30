@@ -17,7 +17,7 @@ const WebsiteOfTheDay = () => {
           alt=""
           className="w-full h-full rounded-2xl object-cover transition-all duration-300"
         />
-        <div className="w-full h-full rounded-2xl absolute bg-[rgba(0,0,0,0.3)] top-0 left-0 flex justify-center items-center"></div>
+        <div className="w-full h-full rounded-2xl absolute bg-[rgba(0,0,0,0.2)] top-0 left-0 flex justify-center items-center"></div>
       </div>
     </div>
   );

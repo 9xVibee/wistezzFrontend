@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { LogOut, MessageSquareText, Rocket, Search } from "lucide-react";
+import { LogIn, LogOut, MessageSquareText, Rocket, Search } from "lucide-react";
 
 import profileImg from "./../assets/batman.jpg";
 
@@ -12,12 +12,23 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DropDownItem from "./DropDownItem";
 import { DropDownData } from "@/utils/data";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState(true);
+
+  useEffect(() => {
+    const handleCloseDropDownMenu = () => setIsOpen(false);
+
+    window.addEventListener("mousedown", handleCloseDropDownMenu);
+
+    return () => {
+      window.removeEventListener("mousedown", handleCloseDropDownMenu);
+    };
+  }, []);
 
   return (
     <div className="flex w-full justify-between px-4 sm:px-6 md:px-8 py-2 glassMorphisom fixed top-0 left-0 z-10">
@@ -61,22 +72,38 @@ const Navbar = () => {
         </TooltipProvider>
 
         {/* Profile */}
-        <div
-          className="w-10 h-10 hover:shadow-lg rounded-full transition-all duration-300 cursor-pointer"
-          onClick={() => {
-            setIsOpen((prev) => !prev);
-          }}
-        >
-          <img
-            src={profileImg}
-            alt=""
-            className="rounded-full hover:shadow-lg"
-          />
-        </div>
+        {user ? (
+          <div
+            className="w-10 h-10 hover:shadow-lg rounded-full transition-all duration-300 cursor-pointer"
+            onClick={() => {
+              setIsOpen((prev) => !prev);
+            }}
+          >
+            <img
+              src={profileImg}
+              alt=""
+              className="rounded-full hover:shadow-lg"
+            />
+          </div>
+        ) : (
+          <TooltipProvider>
+            <Tooltip delayDuration={1}>
+              <TooltipTrigger>
+                <Link to={"/login"}>
+                  <p className="hover:bg-gray-200 cursor-pointer py-2 px-2 rounded-full transition-colors duration-300">
+                    <LogIn />
+                  </p>
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>Login</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        )}
 
         {/* DropDown */}
         {isOpen && (
           <div className="w-[16rem] rounded-md flex flex-col shadow-lg h-fit bg-white absolute top-[3.2rem] right-6 sm:right-8 md:right-10 border py-1 px-2">
+            {/* Iterating over the Dropdown data */}
             {DropDownData.map((item) => (
               <DropDownItem
                 Icon={item.Icon}
@@ -87,6 +114,7 @@ const Navbar = () => {
               />
             ))}
 
+            {/* Todo: Add logout function */}
             <p
               onClick={() => {}}
               className="w-full flex transition-colors duration-300 items-center text-[1rem]  cursor-pointer hover:text-muted-foreground font-medium gap-2 px-2 hover:bg-gray-100 py-2"
