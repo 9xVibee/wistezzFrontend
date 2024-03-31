@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import Button from "@/components/reusable-comp/Button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
@@ -140,13 +141,7 @@ const SignUp = () => {
               Login!!
             </Link>
           </p>
-
-          <button
-            className="w-full py-2 flex bg-[#0f0f0f] items-center justify-center rounded-md text-white hover:opacity-90 text-base mt-7 transition-opacity"
-            type="submit"
-          >
-            Sign up
-          </button>
+          <Button label="Sign up" type="submit" />
         </form>
       </div>
     </div>

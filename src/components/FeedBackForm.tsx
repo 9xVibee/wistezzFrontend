@@ -1,4 +1,5 @@
 import { X } from "lucide-react";
+import Button from "./reusable-comp/Button";
 
 interface FeedBackFormProps {
   setIsFeedBackFormOpen: (isOpen: boolean) => void;
@@ -25,12 +26,7 @@ const FeedBackForm = ({ setIsFeedBackFormOpen }: FeedBackFormProps) => {
           placeholder="what if..."
           rows={4}
         ></textarea>
-        <button
-          className="w-full py-2 flex bg-[#0f0f0f] items-center justify-center rounded-md text-white hover:opacity-90 text-base mt-7 transition-opacity"
-          type="submit"
-        >
-          Submit
-        </button>
+        <Button label="Submit" />
       </div>
       <div
         className="w-full h-full bg-black absolute opacity-70"
