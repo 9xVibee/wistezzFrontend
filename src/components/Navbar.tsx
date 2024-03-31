@@ -15,9 +15,11 @@ import {
 import { useEffect, useState } from "react";
 import DropDownItem from "./DropDownItem";
 import { DropDownData } from "@/utils/data";
+import FeedBackForm from "./FeedBackForm";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isFeedBackFormOpen, setIsFeedBackFormOpen] = useState(false);
   const [user, setUser] = useState(false);
 
   useEffect(() => {
@@ -39,7 +41,10 @@ const Navbar = () => {
       </Link>
       <div className="flex items-center gap-2 sm:gap-4">
         {/* feedback */}
-        <p className="hidden items-center text-[1.1rem] gap-1 bg-gray-200 px-2 rounded-xl cursor-pointer sm:flex">
+        <p
+          className="hidden items-center text-[1.1rem] gap-1 bg-gray-200 px-2 rounded-xl cursor-pointer sm:flex"
+          onClick={() => setIsFeedBackFormOpen(true)}
+        >
           Feedback <MessageSquareText className="size-5 mt-1" />
         </p>
 
@@ -122,6 +127,11 @@ const Navbar = () => {
               <LogOut className="size-[1.2rem]" /> Logout
             </p>
           </div>
+        )}
+
+        {/* Feedback popup */}
+        {isFeedBackFormOpen && (
+          <FeedBackForm setIsFeedBackFormOpen={setIsFeedBackFormOpen} />
         )}
       </div>
     </div>
