@@ -4,6 +4,8 @@ import MainLayout from "./layout/MainLayout";
 import "./index.css";
 import SearchPage from "./pages/SearchPage";
 import SubmitWebsite from "./pages/SubmitWebsite";
+import Login from "./pages/Auth/Login";
+import SignUp from "./pages/Auth/SignUp";
 
 const appRouter = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ const appRouter = createBrowserRouter([
         element: <SubmitWebsite />,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
   },
 ]);
 export default appRouter;

@@ -18,7 +18,7 @@ import { DropDownData } from "@/utils/data";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
 
   useEffect(() => {
     const handleCloseDropDownMenu = () => setIsOpen(false);
