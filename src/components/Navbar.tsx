@@ -5,22 +5,16 @@ import profileImg from "./../assets/batman.jpg";
 
 import { Link } from "react-router-dom";
 
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-
 import { useEffect, useState } from "react";
 import DropDownItem from "./DropDownItem";
 import { DropDownData } from "@/utils/data";
 import FeedBackForm from "./FeedBackForm";
+import ToolTip from "./reusable-comp/ToolTip";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isFeedBackFormOpen, setIsFeedBackFormOpen] = useState(false);
-  const [user, setUser] = useState(false);
+  const [user] = useState(true);
 
   useEffect(() => {
     const handleCloseDropDownMenu = () => setIsOpen(false);
@@ -49,32 +43,18 @@ const Navbar = () => {
         </p>
 
         {/* Submit Website */}
-        <TooltipProvider>
-          <Tooltip delayDuration={1}>
-            <TooltipTrigger>
-              <Link to={"/submit-website"}>
-                <p className="hover:bg-gray-200 cursor-pointer py-2 px-2 rounded-full transition-colors duration-300">
-                  <Rocket />
-                </p>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent>Submit Website</TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <Link to={"/submit-website"}>
+          <ToolTip label="Submit Website">
+            <Rocket />
+          </ToolTip>
+        </Link>
 
         {/* Search */}
-        <TooltipProvider>
-          <Tooltip delayDuration={1}>
-            <TooltipTrigger>
-              <Link to={"/search"}>
-                <p className="hover:bg-gray-200 cursor-pointer py-2 px-2 rounded-full transition-colors duration-300">
-                  <Search />
-                </p>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent>Search</TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <Link to={"/search"}>
+          <ToolTip label="Search">
+            <Search />
+          </ToolTip>
+        </Link>
 
         {/* Profile */}
         {user ? (
@@ -91,18 +71,11 @@ const Navbar = () => {
             />
           </div>
         ) : (
-          <TooltipProvider>
-            <Tooltip delayDuration={1}>
-              <TooltipTrigger>
-                <Link to={"/login"}>
-                  <p className="hover:bg-gray-200 cursor-pointer py-2 px-2 rounded-full transition-colors duration-300">
-                    <LogIn />
-                  </p>
-                </Link>
-              </TooltipTrigger>
-              <TooltipContent>Login</TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <Link to={"/login"}>
+            <ToolTip label="Login">
+              <LogIn />
+            </ToolTip>
+          </Link>
         )}
 
         {/* DropDown */}

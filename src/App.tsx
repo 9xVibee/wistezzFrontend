@@ -6,6 +6,7 @@ import SearchPage from "./pages/SearchPage";
 import SubmitWebsite from "./pages/SubmitWebsite";
 import Login from "./pages/Auth/Login";
 import SignUp from "./pages/Auth/SignUp";
+import WebsiteDetails from "./pages/WebsiteDetails";
 
 const appRouter = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const appRouter = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />,
+  },
+  {
+    path: "/website/:id",
+    element: <WebsiteDetails />,
   },
 ]);
 export default appRouter;
