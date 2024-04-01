@@ -12,6 +12,8 @@ module.exports = {
   theme: {
     fontFamily: {
       zyada: ["Zeyada", "cursive", "system-ui"],
+      lic: ["Licorice", "cursive"],
+      bona: ["Bona Nova", "serif"],
     },
     screens: {
       xs: "500px",
