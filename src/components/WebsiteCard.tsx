@@ -1,17 +1,23 @@
-import BannerImg from "./../assets/pp.png";
-import Banner2Img from "./../assets/Screenshot (447).png";
 import ProfileImg from "./../assets/batman.jpg";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
-const WebsiteCard = ({ idx }: { idx: number }) => {
+const WebsiteCard = () => {
   return (
     <div className="flex flex-col rounded-md gap-2 md:mb-4">
-      <div className="group w-full h-[12rem] border hover:shadow-lg transition-shadow duration-300 overflow-hidden rounded-md cursor-pointer relative">
+      <div className="group w-full h-[12rem] border hover:shadow-lg transition-all duration-300 overflow-hidden rounded-md cursor-pointer relative">
         <Link to={"/website/:id"}>
-          <img
-            src={idx % 2 == 0 ? Banner2Img : BannerImg}
+          {/* <img
+            src={"https://picsum.photos/200"}
             alt=""
             className="rounded-md w-full h-full object-cover transition-all duration-300 group-hover:scale-110"
+          /> */}
+          <LazyLoadImage
+            alt={"image"}
+            effect="blur"
+            src={"https://picsum.photos/200"}
+            wrapperClassName="rounded-md w-full h-full object-cover transition-all duration-300 group-hover:scale-110"
           />
         </Link>
         <div className="w-full h-full rounded-2xl absolute bg-gradient-to-t from-neutral-900 to-transparent top-0 left-0 flex justify-center items-center"></div>
