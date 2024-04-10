@@ -10,7 +10,7 @@ const SearchResult = () => {
         {Array(8)
           .fill("")
           .map((_, idx) => {
-            return <WebsiteCard key={idx} idx={idx} />;
+            return <WebsiteCard key={idx} />;
           })}
       </div>
     </div>

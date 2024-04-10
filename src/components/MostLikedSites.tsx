@@ -1,7 +1,17 @@
 import { Heart } from "lucide-react";
 import WebsiteCard from "./WebsiteCard";
+import { WebsiteCardSkeleton } from "@/utils/skeleton";
+import { useEffect, useState } from "react";
 
 const MostLikedSites = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
+
   return (
     <div className="w-full px-3 md:px-10 h-fit flex flex-col gap-2 items-start justify-center">
       <h1 className="font-semibold flex items-center gap-1 text-xl">
@@ -12,7 +22,8 @@ const MostLikedSites = () => {
         {Array(8)
           .fill("")
           .map((_, idx) => {
-            return <WebsiteCard key={idx} />;
+            if (!loading) return <WebsiteCard key={idx} />;
+            else return <WebsiteCardSkeleton key={idx} />;
           })}
       </div>
     </div>
