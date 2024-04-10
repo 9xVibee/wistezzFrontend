@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { LogIn, LogOut, MessageSquareText, Rocket, Search } from "lucide-react";
 
 import profileImg from "./../assets/batman.jpg";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import DropDownItem from "./DropDownItem";
@@ -17,7 +18,11 @@ const Navbar = () => {
   const [user] = useState(true);
 
   useEffect(() => {
-    const handleCloseDropDownMenu = () => setIsOpen(false);
+    const handleCloseDropDownMenu = (e: any) => {
+      if (e.target?.classList.contains("profile")) return;
+
+      setIsOpen(false);
+    };
 
     window.addEventListener("mousedown", handleCloseDropDownMenu);
 
@@ -67,7 +72,7 @@ const Navbar = () => {
             <img
               src={profileImg}
               alt=""
-              className="rounded-full hover:shadow-lg"
+              className="profile rounded-full hover:shadow-lg"
             />
           </div>
         ) : (
@@ -79,28 +84,29 @@ const Navbar = () => {
         )}
 
         {/* DropDown */}
-        {isOpen && (
-          <div className="w-[16rem] rounded-md flex flex-col shadow-lg h-fit bg-white absolute top-[3.2rem] right-6 sm:right-8 md:right-10 border py-1 px-2">
-            {/* Iterating over the Dropdown data */}
-            {DropDownData.map((item) => (
-              <DropDownItem
-                Icon={item.Icon}
-                link={item.link}
-                title={item.title}
-                extraClass={item.extraClass}
-                key={item.title}
-              />
-            ))}
+        <div
+          className={`w-[16rem] rounded-md flex flex-col shadow-lg h-fit bg-white absolute top-[3.2rem] right-6 sm:right-8 md:right-10 transition border py-1 px-2 
+            ${!isOpen ? "translate-x-[120%]" : "translate-x-0"}`}
+        >
+          {/* Iterating over the Dropdown data */}
+          {DropDownData.map((item) => (
+            <DropDownItem
+              Icon={item.Icon}
+              link={item.link}
+              title={item.title}
+              extraClass={item.extraClass}
+              key={item.title}
+            />
+          ))}
 
-            {/* Todo: Add logout function */}
-            <p
-              onClick={() => {}}
-              className="w-full flex transition-colors duration-300 items-center text-[1rem]  cursor-pointer hover:text-muted-foreground font-medium gap-2 px-2 hover:bg-gray-100 py-2"
-            >
-              <LogOut className="size-[1.2rem]" /> Logout
-            </p>
-          </div>
-        )}
+          {/* Todo: Add logout function */}
+          <p
+            onClick={() => {}}
+            className="w-full flex transition-colors duration-300 items-center text-[1rem]  cursor-pointer hover:text-muted-foreground font-medium gap-2 px-2 hover:bg-gray-100 py-2"
+          >
+            <LogOut className="size-[1.2rem]" /> Logout
+          </p>
+        </div>
 
         {/* Feedback popup */}
         {isFeedBackFormOpen && (

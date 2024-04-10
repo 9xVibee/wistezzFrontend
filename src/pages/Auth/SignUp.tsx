@@ -58,9 +58,13 @@ const SignUp = () => {
               {...register("name")}
               className="py-2 px-1 bg-gray-100 w-full rounded-md outline-none"
             />
-            {errors.name && (
-              <p className="text-red-500">{errors?.name?.message + ""}</p>
-            )}
+            <p
+              className={`text-red-500 ${
+                errors?.name ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              {errors?.name?.message + ""}
+            </p>
           </div>
 
           <div className="flex flex-col gap-1">
@@ -137,7 +141,7 @@ const SignUp = () => {
 
           <p>
             Already a user?{" "}
-            <Link to={"/login"} className=" underline">
+            <Link to={"/login"} className="underline">
               Login!!
             </Link>
           </p>
