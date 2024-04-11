@@ -72,6 +72,7 @@ const Navbar = () => {
             <img
               src={profileImg}
               alt=""
+              loading="lazy"
               className="profile rounded-full hover:shadow-lg"
             />
           </div>

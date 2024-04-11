@@ -15,6 +15,7 @@ const WebsiteOfTheDay = () => {
         <img
           src={tempBannerImg}
           alt=""
+          loading="lazy"
           className="w-full h-full rounded-2xl object-cover transition-all duration-300"
         />
         <div className="w-full h-full rounded-2xl absolute bg-gradient-to-t from-neutral-900 to-transparent top-0 left-0 flex justify-center items-center"></div>

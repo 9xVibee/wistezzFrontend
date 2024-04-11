@@ -22,7 +22,7 @@ const FeedBackForm = ({ setIsFeedBackFormOpen }: FeedBackFormProps) => {
         </p>
         <textarea
           cols={30}
-          rows={10}
+          rows={3}
           className="w-full p-2 rounded-md border"
           placeholder="what if..."
         ></textarea>
